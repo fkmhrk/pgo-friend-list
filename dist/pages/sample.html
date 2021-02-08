@@ -1,0 +1,51 @@
+<div class="sample">
+  <h1>Sample </h1>
+
+  <section>
+    <h2>TextField/Area</h2>
+    <div>
+      <TextField
+        id="email-input"
+        type="text"
+        name="title"
+        label="Title"
+        value="{{title}}"
+        required/>      
+    </div>
+    <div style="margin-top: 16px;">
+      <TextArea
+        id="detail-input"
+        label="Detail"
+        value="{{detail}}"
+        rows="9"
+        required/>
+    </div>
+    <div>
+      <RaisedButton on-click="submit">Send</RaisedButton>
+    </div>
+  </section>
+
+  <section>
+    <h2>Select</h2>
+    <Select 
+      label="Pick!"
+      options="{{options}}"
+      value="{{optionValue}}"
+      ></Select>
+    <div>
+      <RaisedButton on-click="submitSelect">Send</RaisedButton>
+    </div>
+  </section>
+
+  <section>
+    <h2>List</h2>
+    <List>
+      {{#listItems:i}}
+      <SingleLineListItem 
+        index="{{i}}" 
+        label="{{.label}}"
+        on-click="['listClicked',.]"></SingleLineListItem>
+      {{/}}
+    </List>
+  </section>
+</div>

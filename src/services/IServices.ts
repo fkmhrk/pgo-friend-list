@@ -1,0 +1,3 @@
+interface IServices {
+    account: IAccountService;
+}

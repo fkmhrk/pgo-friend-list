@@ -1,0 +1,7 @@
+*~
+node_modules/*
+dist/main.js
+dist/mdc.css
+src/*.js
+src/*.js.map
+!src/ractive.js

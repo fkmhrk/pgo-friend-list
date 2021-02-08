@@ -1,0 +1,3 @@
+interface IPage {
+    onCreate(): void;
+}

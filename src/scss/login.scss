@@ -1,0 +1,14 @@
+.login {
+    padding-top: 64px;
+    .mdc-card {
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 16px;
+    }
+    .email,
+    .password {
+        display: block;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+}

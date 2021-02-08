@@ -1,0 +1,7 @@
+version: "3"
+services:
+    webapp:
+        build: .
+        image: mokelab/webapp-template:latest
+        ports:
+            - 15080:80
