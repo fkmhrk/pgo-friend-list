@@ -9,6 +9,7 @@ export default class EditTrainerPage implements IPage {
 
   constructor(private app: IApplication, private name: string) {}
   async onCreate() {
+    this.app.appBar.setHasBack(true);
     const t = await this.app.fetchTemplate("editTrainer.html");
     this.ractive = new Ractive({
       el: "#container",
