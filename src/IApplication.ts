@@ -12,4 +12,6 @@ interface IApplication {
   navigate(path: string): void;
 
   redirect(path: string): void;
+
+  showMessage(msg: string): void;
 }

@@ -2,6 +2,7 @@
 /// <reference path="./services/IServices.ts" />
 /// <reference path="./clients/HTTPClient.ts" />
 
+import { MDCSnackbar } from "@material/snackbar";
 import { getBody, isStatus200 } from "./clients/Functions";
 
 export default class Application implements IApplication {
@@ -10,6 +11,7 @@ export default class Application implements IApplication {
   services: IServices;
   appBar: IAppBar;
   drawer: IDrawer;
+  private snackBar: MDCSnackbar;
 
   constructor(
     templateClient: HTTPClient,
@@ -26,6 +28,7 @@ export default class Application implements IApplication {
     this.drawer = drawerFactory(this);
     this.appBar = appBarFactory(this.drawer);
     this.appBar.setHasDrawer(false);
+    this.snackBar = new MDCSnackbar(document.querySelector(".mdc-snackbar")!);
   }
 
   start() {
@@ -46,5 +49,10 @@ export default class Application implements IApplication {
 
   redirect(path: string): void {
     this.router.redirect(path);
+  }
+
+  showMessage(msg: string): void {
+    (<any>this.snackBar).labelText = msg;
+    (<any>this.snackBar).open();
   }
 }

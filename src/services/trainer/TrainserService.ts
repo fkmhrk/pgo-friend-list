@@ -1,5 +1,6 @@
 export default class TrainserService implements ITrainserService {
   constructor(private repo: ITrainerRepository) {}
+
   async add(
     trainers: ITrainer[],
     name: string,
@@ -18,5 +19,22 @@ export default class TrainserService implements ITrainserService {
     const newTrainer = await this.repo.add(name2, label2);
     trainers.push(newTrainer);
     return trainers;
+  }
+
+  async updateLabel(name: string, label: any): Promise<ITrainer> {
+    try {
+      const newTrainer = await this.repo.updateLabel(name, label);
+      return newTrainer;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  async deleteTrainer(name: string): Promise<void> {
+    try {
+      await this.repo.deleteTrailer(name);
+    } catch (e) {
+      throw e;
+    }
   }
 }
