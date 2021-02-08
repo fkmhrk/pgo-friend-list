@@ -1,11 +1,14 @@
 const path = require("path");
-const outputPath = path.resolve(__dirname, "dist");
+const outputPath = path.resolve(__dirname, "docs");
 
 module.exports = {
     mode: "development",
     //mode: 'production',
 
     entry: "./src/main.ts",
+    output: {
+        path: outputPath,
+    },
 
     module: {
         rules: [

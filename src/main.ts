@@ -8,23 +8,32 @@ import AccessToken from "./models/token/AccessToken";
 import "./scss/index.scss";
 import { Drawer } from "./views/Drawer";
 import { AppBar } from "./views/AppBar";
+import { openIndexedDB } from "./models/db/openHelper";
 
-const token = new AccessToken();
-const client = new XHRClient("json");
-const models = new Models(client, token);
-const services = new Services(models);
-const app = new Application(
+const boot = async () => {
+  const db = await openIndexedDB("trainers", 1, (db: IDBDatabase) => {
+    db.createObjectStore("trainers", { keyPath: "name" });
+  });
+  const token = new AccessToken();
+  const client = new XHRClient("json");
+  const models = new Models(client, token, db);
+  const services = new Services(models);
+  const app = new Application(
     new XHRClient("text"),
     services,
+    models,
     (a: IApplication) => {
-        return new Router(a);
+      return new Router(a);
     },
     (app: IApplication) => {
-        return new Drawer(app);
+      return new Drawer(app);
     },
     (drawer: IDrawer) => {
-        return new AppBar(drawer);
+      return new AppBar(drawer);
     }
-);
+  );
 
-app.start();
+  app.start();
+};
+
+boot();

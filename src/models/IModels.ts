@@ -1,3 +1,4 @@
 interface IModels {
-    account: IAccountRepository;
+  account: IAccountRepository;
+  trainer: ITrainerRepository;
 }

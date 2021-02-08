@@ -1,3 +1,4 @@
 interface IServices {
-    account: IAccountService;
+  account: IAccountService;
+  trainer: ITrainserService;
 }

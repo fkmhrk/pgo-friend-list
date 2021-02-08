@@ -1,0 +1,22 @@
+.main {
+  padding-top: 64px;
+  max-width: 600px;
+  margin: 0 auto;
+  .add-trainer {
+    .form {
+      width: 100%;
+    }
+  }
+  .bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 8px;
+    .form {
+      width: 100%;
+    }
+  }
+}

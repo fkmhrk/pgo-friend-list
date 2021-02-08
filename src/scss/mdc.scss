@@ -25,5 +25,8 @@
 // list
 @use "@material/list";
 
+@use "@material/checkbox";
+
 @include textfield.core-styles;
 @include list.core-styles;
+@include checkbox.core-styles;
