@@ -1,11 +1,12 @@
 /// <reference path="./IRouter.ts" />
-/// <reference path="./page.d.ts" />
 /// <reference path="./IApplication.ts" />
 /// <reference path="./pages/IPage.ts" />
 
 import TopPage from "./pages/TopPage";
+import page from "page";
 import TrainerListPage from "./pages/TrainerListPage";
 import WidgetSamplePage from "./pages/WidgetSample";
+import EditTrainerPage from "./pages/EditTrainerPage";
 
 export default class Router implements IRouter {
   constructor(app: IApplication) {
@@ -15,12 +16,20 @@ export default class Router implements IRouter {
     page("/trainers", () => {
       this.showPage(new TrainerListPage(app));
     });
+    page("/trainers/:name", (ctx: PageJS.Context) => {
+      this.showPage(new EditTrainerPage(app, ctx.params.name));
+    });
+
     page("/pgo-friend-list/", () => {
       this.showPage(new TopPage(app));
     });
     page("/pgo-friend-list/trainers", () => {
       this.showPage(new TrainerListPage(app));
     });
+    page("/pgo-friend-list/trainers/:name", (ctx: PageJS.Context) => {
+      this.showPage(new EditTrainerPage(app, ctx.params.name));
+    });
+
     page("/sample", () => {
       this.showPage(new WidgetSamplePage(app));
     });

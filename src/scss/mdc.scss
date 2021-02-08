@@ -27,6 +27,8 @@
 
 @use "@material/checkbox";
 
+@use "@material/snackbar/mdc-snackbar";
+
 @include textfield.core-styles;
 @include list.core-styles;
 @include checkbox.core-styles;

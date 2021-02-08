@@ -1,0 +1,25 @@
+<div class="main">
+  {{#loading}}
+  {{else}}
+  <div class="edit-name">
+    <h2>Edit name</h2>
+    <div>
+      <TextField 
+        id="label-input"
+        class="form"
+        type="text"
+        name="label"
+        label="Label"
+        value="{{label}}"
+        required/>            
+    </div>
+    <div style="text-align: right;">
+      <RaisedButton on-click="updateLabel">Update</RaisedButton>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <RaisedButton on-click="deleteTrainer">Delete</RaisedButton>
+  </div>
+  {{/if}}
+</div>
