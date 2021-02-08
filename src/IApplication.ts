@@ -4,6 +4,7 @@
 interface IApplication {
   services: IServices;
   models: IModels;
+  appBar: IAppBar;
 
   start(router: IRouter): void;
 

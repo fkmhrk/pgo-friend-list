@@ -12,6 +12,7 @@ export default class TopPage implements IPage {
     this.app = app;
   }
   async onCreate() {
+    this.app.appBar.setHasBack(false);
     const t = await this.app.fetchTemplate("top.html");
     this.ractive = new Ractive({
       el: "#container",

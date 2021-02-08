@@ -12,6 +12,7 @@ export default class TrainerListPage implements IPage {
     this.app = app;
   }
   async onCreate() {
+    this.app.appBar.setHasBack(true);
     const t = await this.app.fetchTemplate("trainerList.html");
     this.ractive = new Ractive({
       el: "#container",
