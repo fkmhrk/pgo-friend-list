@@ -33,7 +33,7 @@ export default class Application implements IApplication {
   }
 
   fetchTemplate(name: string): Promise<string> {
-    const url = `/pages/${name}`;
+    const url = `pages/${name}`;
     return this.templateClient
       .send(Method.GET, url, {}, null)
       .then(isStatus200)
