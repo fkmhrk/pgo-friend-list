@@ -29,7 +29,8 @@
   {{#trainers:i}}
     <SingleLineListItem
       index="{{i}}" 
-      label="{{.label}}({{.name}})"/>
+      label="{{.label}}({{.name}})"
+      on-click="['friendClicked', .]"/>
   {{/}}
   </List>
 

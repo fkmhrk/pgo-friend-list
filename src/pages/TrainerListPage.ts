@@ -28,6 +28,9 @@ export default class TrainerListPage implements IPage {
       },
       on: {
         add: () => this.addTrainer(),
+        friendClicked: (e: any, trainer: ITrainer) => {
+          this.app.navigate(`/trainers/${trainer.name}`);
+        },
       },
     });
 
