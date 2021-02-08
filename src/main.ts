@@ -11,6 +11,13 @@ import { AppBar } from "./views/AppBar";
 import { openIndexedDB } from "./models/db/openHelper";
 
 const boot = async () => {
+  // service worker
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js");
+    });
+  }
+
   const db = await openIndexedDB("trainers", 1, (db: IDBDatabase) => {
     db.createObjectStore("trainers", { keyPath: "name" });
   });
