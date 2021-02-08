@@ -4,6 +4,7 @@
 /// <reference path="./pages/IPage.ts" />
 
 import TopPage from "./pages/TopPage";
+import TrainerListPage from "./pages/TrainerListPage";
 import WidgetSamplePage from "./pages/WidgetSample";
 
 export default class Router implements IRouter {
@@ -11,8 +12,14 @@ export default class Router implements IRouter {
     page("/", () => {
       this.showPage(new TopPage(app));
     });
+    page("/trainers", () => {
+      this.showPage(new TrainerListPage(app));
+    });
     page("/pgo-friend-list/", () => {
       this.showPage(new TopPage(app));
+    });
+    page("/pgo-friend-list/trainers", () => {
+      this.showPage(new TrainerListPage(app));
     });
     page("/sample", () => {
       this.showPage(new WidgetSamplePage(app));
