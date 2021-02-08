@@ -44,11 +44,11 @@ export default class Application implements IApplication {
   }
 
   navigate(path: string): void {
-    this.router.navigate(path);
+    this.router.navigate(`/pgo-friend-list${path}`);
   }
 
   redirect(path: string): void {
-    this.router.redirect(path);
+    this.router.redirect(`/pgo-friend-list${path}`);
   }
 
   showMessage(msg: string): void {
