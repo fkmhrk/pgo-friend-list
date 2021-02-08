@@ -54,6 +54,8 @@ export default class TopPage implements IPage {
       );
       this.ractive.set({
         trainers: newTrainers,
+        name: "",
+        label: "",
       });
     } catch (e) {
       console.log(e);
