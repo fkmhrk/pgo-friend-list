@@ -4,7 +4,7 @@ import { RaisedButton } from "../views/Button";
 import { List, SingleLineListItem } from "../views/List";
 import { TextField } from "../views/TextField";
 
-export default class TopPage implements IPage {
+export default class TrainerListPage implements IPage {
   private app: IApplication;
   private ractive!: Ractive;
 
@@ -12,7 +12,7 @@ export default class TopPage implements IPage {
     this.app = app;
   }
   async onCreate() {
-    const t = await this.app.fetchTemplate("top.html");
+    const t = await this.app.fetchTemplate("trainerList.html");
     this.ractive = new Ractive({
       el: "#container",
       template: t,
@@ -27,8 +27,10 @@ export default class TopPage implements IPage {
         generate: (trainers: any[]) => this.generate(trainers),
       },
       on: {
-        edit: () => this.app.navigate("/trainers"),
         add: () => this.addTrainer(),
+        friendClicked: (e: any, trainer: ITrainer) => {
+          this.app.navigate(`/trainers/${trainer.name}`);
+        },
       },
     });
 

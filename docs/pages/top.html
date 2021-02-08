@@ -1,6 +1,9 @@
 <div class="main">
   <h1 class="">Friend list</h1>
 
+  <div style="text-align: right;">
+    <RaisedButton on-click="edit">Edit</RaisedButton>
+  </div>
   <List>
   {{#trainers:i}}
   <li class="mdc-list-item" role="checkbox" aria-checked="{{.checked}}" tabindex="0">
@@ -26,30 +29,6 @@
   </li>
   {{/}}
   </List>
-  <div class="add-trainer">
-    <div>
-      <TextField 
-        id="name-input"
-        class="form"
-        type="text"
-        name="name"
-        label="Trainer name"
-        value="{{name}}"
-        required/>      
-    </div>
-    <div>
-    <TextField 
-      id="label-input"
-      class="form"
-      type="text"
-      name="label"
-      label="Label(optional)"
-      value="{{label}}" />
-    </div>    
-    <div>
-      <RaisedButton class="button" on-click="add">Add</RaisedButton>
-    </div>
-  </div>
 
   <div class="bottom">
     <TextField 

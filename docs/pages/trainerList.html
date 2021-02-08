@@ -1,0 +1,48 @@
+<div class="main">
+  <div class="add-trainer">
+    <div>
+      <TextField 
+        id="name-input"
+        class="form"
+        type="text"
+        name="name"
+        label="Trainer name"
+        value="{{name}}"
+        required/>      
+    </div>
+    <div>
+    <TextField 
+      id="label-input"
+      class="form"
+      type="text"
+      name="label"
+      label="Label(optional)"
+      value="{{label}}" />
+    </div>    
+    <div>
+      <RaisedButton class="button" on-click="add">Add</RaisedButton>
+    </div>
+  </div>
+
+  <h2 class="">Friend list</h2>
+  <List>
+  {{#trainers:i}}
+    <SingleLineListItem
+      index="{{i}}" 
+      label="{{.label}}({{.name}})"
+      on-click="['friendClicked', .]"/>
+  {{/}}
+  </List>
+
+
+  <div class="bottom">
+    <TextField 
+      id="generated-input"
+      class="form"
+      type="text"
+      name="label"
+      label=""
+      value="{{generate(trainers)}}"
+      readonly />    
+  </div>
+</div>
