@@ -8,33 +8,28 @@ import TrainerListPage from "./pages/TrainerListPage";
 import WidgetSamplePage from "./pages/WidgetSample";
 import EditTrainerPage from "./pages/EditTrainerPage";
 import ExportPage from "./pages/ExportPage";
+import ImportPage from "./pages/ImportPage";
 
 export default class Router implements IRouter {
   constructor(app: IApplication) {
-    page("/", () => {
+    const addRoute = (path: string, func: PageJS.Callback) => {
+      page(path, func);
+      page(`/pgo-friend-list${path}`, func);
+    };
+    addRoute("/", () => {
       this.showPage(new TopPage(app));
     });
-    page("/trainers", () => {
+    addRoute("/trainers", () => {
       this.showPage(new TrainerListPage(app));
     });
-    page("/trainers/:name", (ctx: PageJS.Context) => {
+    addRoute("/trainers/:name", (ctx: PageJS.Context) => {
       this.showPage(new EditTrainerPage(app, ctx.params.name));
     });
-    page("/trainer/export", () => {
+    addRoute("/trainer/export", () => {
       this.showPage(new ExportPage(app));
     });
-
-    page("/pgo-friend-list/", () => {
-      this.showPage(new TopPage(app));
-    });
-    page("/pgo-friend-list/trainers", () => {
-      this.showPage(new TrainerListPage(app));
-    });
-    page("/pgo-friend-list/trainers/:name", (ctx: PageJS.Context) => {
-      this.showPage(new EditTrainerPage(app, ctx.params.name));
-    });
-    page("/pgo-friend-list/trainer/export", () => {
-      this.showPage(new ExportPage(app));
+    addRoute("/trainer/import", () => {
+      this.showPage(new ImportPage(app));
     });
 
     page("/sample", () => {
