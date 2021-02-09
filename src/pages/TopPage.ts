@@ -30,6 +30,7 @@ export default class TopPage implements IPage {
       on: {
         edit: () => this.app.navigate("/trainers"),
         add: () => this.addTrainer(),
+        copy: () => this.copy(),
       },
     });
 
@@ -70,5 +71,16 @@ export default class TopPage implements IPage {
       .reduce((v, t) => v + "," + t["name"], "")
       .substr(1);
     return str;
+  }
+
+  async copy() {
+    const trainers = this.ractive.get("trainers") as any[];
+    const names = this.generate(trainers);
+    try {
+      await window.navigator.clipboard.writeText(names);
+      this.app.showMessage("Copied to clipboard");
+    } catch (e) {
+      this.app.showMessage(JSON.stringify(e));
+    }
   }
 }

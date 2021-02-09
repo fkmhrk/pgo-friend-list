@@ -1,5 +1,7 @@
 .main {
   padding-top: 64px;
+  padding-left: 8px;
+  padding-right: 8px;
   max-width: 600px;
   margin: 0 auto;
   .add-trainer {
@@ -23,8 +25,14 @@
     padding-right: 8px;
     padding-bottom: 24px;
     padding-top: 8px;
+
+    display: flex;
+    align-items: center;
     .form {
-      width: 100%;
+      flex-grow: 1;
+    }
+    .button {
+      flex-grow: 0;
     }
   }
 }
