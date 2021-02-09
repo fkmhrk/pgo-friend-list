@@ -49,3 +49,12 @@ export const deleteByKey = (store: IDBObjectStore, key: string) =>
     };
     r.onerror = (ev: Event) => reject(ev);
   });
+
+export const deleteAll = (store: IDBObjectStore) =>
+  new Promise((resolve: (v: void) => void, reject: (reason: any) => void) => {
+    const r = store.clear();
+    r.onsuccess = (ev: Event) => {
+      resolve();
+    };
+    r.onerror = (ev: Event) => reject(ev);
+  });

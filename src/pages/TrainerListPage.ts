@@ -1,6 +1,6 @@
 /// <reference path="./IPage.ts" />
 import Ractive from "ractive";
-import { RaisedButton } from "../views/Button";
+import { FlatButton, RaisedButton } from "../views/Button";
 import { List, SingleLineListItem } from "../views/List";
 import { TextField } from "../views/TextField";
 
@@ -22,6 +22,7 @@ export default class TrainerListPage implements IPage {
         List: List,
         SingleLineListItem: SingleLineListItem,
         RaisedButton: RaisedButton,
+        FlatButton: FlatButton,
       },
       data: {
         trainers: [],
@@ -32,6 +33,8 @@ export default class TrainerListPage implements IPage {
         friendClicked: (e: any, trainer: ITrainer) => {
           this.app.navigate(`/trainers/${trainer.name}`);
         },
+        toImport: () => this.app.navigate("/trainer/import"),
+        toExport: () => this.app.navigate("/trainer/export"),
       },
     });
 

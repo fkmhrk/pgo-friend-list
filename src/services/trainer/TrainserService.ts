@@ -37,4 +37,26 @@ export default class TrainserService implements ITrainserService {
       throw e;
     }
   }
+
+  async parseImportData(data: string): Promise<ITrainer[]> {
+    let jsonData: any;
+    try {
+      jsonData = JSON.parse(data);
+    } catch (e) {
+      throw new Error("data may be broken");
+    }
+    try {
+      return await this.repo.parseImportData(jsonData);
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  async execImport(trainers: ITrainer[]): Promise<void> {
+    try {
+      await this.repo.import(trainers);
+    } catch (e) {
+      throw e;
+    }
+  }
 }

@@ -5,6 +5,9 @@ interface ITrainerRepository {
 
   getAll(): Promise<ITrainer[]>;
   getByName(name: string): Promise<ITrainer>;
+
+  parseImportData(data: string): Promise<ITrainer[]>;
+  import(trainers: ITrainer[]): Promise<void>;
 }
 
 interface ITrainer {
