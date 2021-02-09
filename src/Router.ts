@@ -7,6 +7,7 @@ import page from "page";
 import TrainerListPage from "./pages/TrainerListPage";
 import WidgetSamplePage from "./pages/WidgetSample";
 import EditTrainerPage from "./pages/EditTrainerPage";
+import ExportPage from "./pages/ExportPage";
 
 export default class Router implements IRouter {
   constructor(app: IApplication) {
@@ -19,6 +20,9 @@ export default class Router implements IRouter {
     page("/trainers/:name", (ctx: PageJS.Context) => {
       this.showPage(new EditTrainerPage(app, ctx.params.name));
     });
+    page("/trainer/export", () => {
+      this.showPage(new ExportPage(app));
+    });
 
     page("/pgo-friend-list/", () => {
       this.showPage(new TopPage(app));
@@ -28,6 +32,9 @@ export default class Router implements IRouter {
     });
     page("/pgo-friend-list/trainers/:name", (ctx: PageJS.Context) => {
       this.showPage(new EditTrainerPage(app, ctx.params.name));
+    });
+    page("/pgo-friend-list/trainer/export", () => {
+      this.showPage(new ExportPage(app));
     });
 
     page("/sample", () => {

@@ -41,7 +41,8 @@ export const TextArea = Ractive.extend(<any>{
       cols="{{cols}}"
       aria-label="{{label}}"
       value="{{value}}"
-      {{#if required}}required{{/if}}></textarea>
+      {{#if required}}required{{/if}}
+      {{#if readonly}}readonly{{/if}}></textarea>
   </span>
   <span class="mdc-floating-label" id="{{id}}">{{label}}</span>
   <span class="mdc-line-ripple"></span>
